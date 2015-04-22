@@ -1,0 +1,99 @@
+@import 'utlils/reset';
+
+$bg-svg: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnIHdpZHRoPSIxMDAwcHgiIGhlaWdodD0iMjcxcHgiIHZpZXdCb3g9IjAgMCAxMDAwIDI3MSIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczpza2V0Y2g9Imh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaC9ucyI+DQogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc2tldGNoOnR5cGU9Ik1TUGFnZSI+DQogICAgICAgIDxwYXRoIGQ9Ik0wLDEwIEwxMDAwLDEwIEwxMDAwLDI2MC45NjE1MzggQzEwMDAsMjYwLjk2MTUzOCA4MzIuODI5NDI3LDI1MC45MjMwNzcgNzUwLDI1MC45MjMwNzcgQzU4Mi45MzM1OTQsMjUwLjkyMzA3NyA0MTcuMzc4OTA2LDI3MSAyNTAuMzEyNSwyNzEgQzE2Ni44NzUsMjcxIDAsMjYwLjk2MTUzOCAwLDI2MC45NjE1MzggTDAsMTAgWiIgaWQ9IlJlY3RhbmdsZS0xLUNvcHkiIGZpbGw9IiMxQUJDOUMiIHNrZXRjaDp0eXBlPSJNU1NoYXBlR3JvdXAiPjwvcGF0aD4NCiAgICAgICAgPHBhdGggZD0iTTAsMCBMMTAwMCwwIEwxMDAwLDI1MCBDMTAwMCwyNTAgODMyLjgyOTQyNywyNDAgNzUwLDI0MCBDNTgyLjkzMzU5NCwyNDAgNDE3LjM3ODkwNiwyNjAgMjUwLjMxMjUsMjYwIEMxNjYuODc1LDI2MCAwLDI1MCAwLDI1MCBMMCwwIFoiIGlkPSJSZWN0YW5nbGUtMSIgZmlsbD0iIzE2QTA4NSIgc2tldGNoOnR5cGU9Ik1TU2hhcGVHcm91cCI+PC9wYXRoPg0KICAgIDwvZz4NCjwvc3ZnPg==');
+
+$emerald: #16A085;
+$emerald-l: #1ABC9C;
+
+*,
+*:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+section,
+.inside {
+  display: block;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+header {
+  $hanim: header 750s linear 0s infinite;
+  padding: 40px 20px 80px;
+  background: $bg-svg top left repeat-x;
+  background-size: auto 100%;
+  -webkit-animation: $hanim;
+  animation: $hanim;
+  text-align: center;
+  color: #fff;
+
+  h1 {
+    font-size: 3.75em;
+    margin: 0;
+
+    span { font-weight: 300; }
+  }
+
+  .subline { color: mix($emerald, black, 60) }
+}
+
+@mixin hkeyf {
+  from {background-position: 0%;} to {background-position: 10000%;}
+}
+
+@-webkit-keyframes header { @include hkeyf; }
+@keyframes header { @include hkeyf; }
+
+.main {}
+
+.issue {
+  color: $emerald;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-align: center;
+  padding: 40px 0;
+  border-bottom: 1px solid mix($emerald, #fff, 20);
+
+  span {
+    font-family: "Times New Roman", Times, serif;
+
+    span {
+      margin-left: 10px;
+      font-size: 2rem;
+      vertical-align: middle;
+      font-weight: normal;
+    }
+  }
+}
+
+.index {
+  padding: 0; margin: 0;
+  list-style: none;
+  display: flex;
+  border-bottom: 1px solid mix($emerald, #fff, 20);
+
+  li {
+    flex-grow: 1;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  a {
+    // color: $emerald;
+    color: $emerald-l;
+    text-decoration: none;
+    font-weight: 300;
+    transition: all 250ms ease-out;
+    box-shadow: 0 4px #fff, 0 6px #fff;
+
+    &:hover {
+      color: $emerald;
+      transition: all 80ms ease-in;
+      box-shadow: 0 0 #fff, 0 2px $emerald;
+    }
+  }
+}
