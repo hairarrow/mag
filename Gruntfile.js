@@ -86,6 +86,7 @@ module.exports = function(grunt) {
         logConnections: true,
         notify: false,
         directory: true,
+        tunnel: "csscsscss",
         watchTask: true,
         browser: ['Google Chrome'],
         host: '0.0.0.0',

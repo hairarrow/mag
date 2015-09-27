@@ -4,6 +4,7 @@ $bg-svg: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i
 
 $emerald: #16A085;
 $emerald-l: #1ABC9C;
+$white: #FCFBFC;
 
 *,
 *:before, *:after {
@@ -12,7 +13,8 @@ $emerald-l: #1ABC9C;
   box-sizing: border-box;
 }
 
-section,
+body { background: $white; }
+
 .inside {
   display: block;
   width: 100%;
@@ -25,10 +27,11 @@ header {
   padding: 40px 20px 80px;
   background: $bg-svg top left repeat-x;
   background-size: auto 100%;
+  -ms-animation: $hanim;
   -webkit-animation: $hanim;
   animation: $hanim;
   text-align: center;
-  color: #fff;
+  color: $white;
 
   h1 {
     font-size: 3.75em;
@@ -41,16 +44,17 @@ header {
 }
 
 @mixin hkeyf {
-  from {background-position: 0%;} to {background-position: 10000%;}
+  from {background-position: 0%;} to {background-position: 20000%;}
 }
 
+@-ms-keyframes header { @include hkeyf; }
 @-webkit-keyframes header { @include hkeyf; }
 @keyframes header { @include hkeyf; }
 
-.main {}
+.main { @extend .inside; }
 
 .issue {
-  color: $emerald;
+  color: mix($emerald, white, 50);
   text-transform: uppercase;
   font-size: 0.75em;
   font-weight: bold;
@@ -62,6 +66,7 @@ header {
     font-family: "Times New Roman", Times, serif;
 
     span {
+      color: $emerald;
       margin-left: 10px;
       font-size: 2rem;
       vertical-align: middle;
@@ -76,6 +81,10 @@ header {
   display: flex;
   border-bottom: 1px solid mix($emerald, #fff, 20);
 
+  @media screen and (max-width: 780px) {
+    flex-direction: column;
+  }
+
   li {
     flex-grow: 1;
     text-align: center;
@@ -83,17 +92,174 @@ header {
   }
 
   a {
-    // color: $emerald;
     color: $emerald-l;
     text-decoration: none;
     font-weight: 300;
     transition: all 250ms ease-out;
-    box-shadow: 0 4px #fff, 0 6px #fff;
+    box-shadow: 0 4px $white, 0 6px $white;
 
     &:hover {
       color: $emerald;
       transition: all 80ms ease-in;
-      box-shadow: 0 0 #fff, 0 2px $emerald;
+      box-shadow: 0 0 $white, 0 2px $emerald;
+    }
+  }
+}
+
+article {
+  padding: 100px 20px;
+
+  h2 {
+    font-weight: 300;
+    text-align: center;
+    margin: 0; margin-bottom: 10px;
+    font-size: 2em;
+    color: mix($emerald, black, 70);
+  }
+
+  .author {
+    display: block;
+    width: 50%;
+    margin: auto auto 40px;
+    padding-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid mix($emerald, white, 10);
+    color: mix($emerald, black, 70);
+    opacity: .5;
+
+    &:before { content: 'By: '; }
+  }
+
+  p {
+    max-width: 570px;
+    margin: 20px auto;
+    font-family: Georgia, serif;
+    font-size: 1.125em;
+    line-height: 1.6;
+  }
+
+  blockquote {
+    max-width: 570px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Georgia, serif;
+    font-size: 1.125em;
+    line-height: 1.6;
+    border: 1px solid darken(white, 10);
+    border-radius: 4px;
+    font-style: italic;
+    color: #555;
+  }
+}
+
+@mixin paper($section-bg) {
+  max-width:840px;
+  padding: 100px 20px;
+  background: $white;
+  border: 1px solid $section-bg;
+  border-radius: 4px;
+}
+
+$dclor: #3D566E;
+
+#management {
+  background: $dclor;
+  padding: 100px 20px;
+
+  .inside {
+    @include paper(darken($dclor, 10));
+  }
+}
+
+#trends {
+  border-top: 1px solid mix($emerald, white, 10);
+  background: mix($emerald, white, 2);
+
+  .inside {
+    @include paper(mix($emerald, white, 10));
+  }
+}
+
+.events {
+  padding: 100px 20px;
+  border-top: 1px solid mix($emerald, black, 90);
+  border-bottom: 1px solid mix($emerald, black, 90);
+  background: $emerald;
+
+  .inside {
+    @include paper(mix($emerald, black, 90));
+    padding: 20px 0;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 20px 0;
+    text-align: center;
+    font-weight: 300;
+    background: mix($emerald, white, 5);
+    color: $emerald;
+    border-top: 1px solid mix($emerald, white, 20);
+    border-bottom: 1px solid mix($emerald, white, 20);
+  }
+
+  .event {
+    padding-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .event-item {
+      max-width: 240px;
+      border-radius: 8px;
+      flex-grow: 1;
+      display: inline-block;
+      background: #fff;
+      border: 1px solid $emerald;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    h4 {
+      margin: 0;
+      text-align: center;
+      padding: 14px 0;
+      background: mix($emerald, white, 5);
+    }
+
+    .date {
+      font-size: 0.875em;
+      text-align: center;
+      color: mix($emerald, black, 90);
+      background: mix($emerald, white, 20);
+      padding: 8px 0;
+      border-top: 1px solid $emerald;
+      border-bottom: 1px solid $emerald;
+    }
+
+    .description {
+      padding: 20px;
+      background: mix($emerald, white, 5);
+      color: #666;
+      font-size: 0.875em;
+      line-height: 1.4;
+    }
+  }
+}
+
+footer {
+  padding: 40px 0;
+  text-align: center;
+
+  a {
+    color: #444;
+    font-size: 1.5em;
+    text-decoration: none;
+
+    span {
+      display: block;
+      font-size: 1rem;
+      color: #F97E1F;
+      font-weight: 300;
     }
   }
 }
